@@ -1,0 +1,140 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.RecipesDetailBodyHeader{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    width: 100%;
+    height: 50vh;
+    aspect-ratio: 2/1;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 2rem;
+    padding: 1rem 5rem;
+    h1{
+        background-color: #0d432ee8;
+        color: #e0e0e0e0;
+        font-size: 2rem;
+        font-weight: 500;
+        margin: 0;
+        padding: .5rem 1rem;
+        border-radius: 2rem;
+        font-family: "Inter", sans-serif;
+        text-align: center;
+    }
+    p{
+        color: #e0e0e09a;
+        font-size: 1rem;
+        font-weight: 400;
+        margin: 0;
+        padding: 1rem 2rem;
+        border-radius: 2rem;
+        font-family: "Inter", sans-serif;
+    // box-shadow: 0px 0px 10px #093c28;
+    background-color: #0d432ee8;
+    }
+    
+}
+.RecipesDetailPageContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 80%;
+    // height: 100vh;
+    padding: 0 2rem;
+    background-color: #ecf5f2;
+}
+.RecipesDetailBodyContent{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+    // height: 10vh;
+    // aspect-ratio: 2/1;
+}
+.RecipeContentBox{
+    display: flex;
+    flex-direction: row;
+    // align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+    // height: 10vh;
+    // aspect-ratio: 2/1;
+    background-color: #7b988f76;
+    border-radius: 2rem;
+    padding: 1rem 2rem;
+    .BoxCol{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        // text-align: center;
+        // justify-content: center;
+        gap: 1rem;
+        width: 100%;
+        // height: 10vh;
+        // aspect-ratio: 2/1;
+        flex: 33%;
+        padding: .5rem;
+    }
+    .BoxRow{
+        display: flex;
+        flex-direction: column;
+        // align-items: center;
+        // text-align: left;
+        // justify-content: center;
+        gap: .25rem;
+        width: 100%;
+        // height: 10vh;
+        // aspect-ratio: 2/1;
+        // flex: 50%
+        // padding: .5rem;
+        h1{
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 0;
+            // text-align: center;
+            font-family: "Inter", sans-serif;
+            color: #32634F;
+        }
+        p{
+            color: #676767;
+            font-size: 1rem;
+            font-weight: 400;
+            margin: 0;
+            // text-align: center;
+            font-family: "Inter", sans-serif;
+        }
+    }
+
+}
+.step-item{
+    margin-top: .5rem;
+    background-color: #7b988f76;
+    padding: .5rem;
+    border-radius: 10px;
+}
+.step-item:hover{
+    background-color: #7b988f;
+    transition: all 0.3s ease-in-out;
+    p{
+        color: #ecf5f2;
+    }
+}
+.step-number{
+   color: #0f1010c9;
+   font-weight: 600;
+   margin-bottom: .5rem;
+    
+}

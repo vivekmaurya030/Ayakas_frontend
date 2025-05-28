@@ -1,0 +1,280 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Sedgwick+Ave+Display&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    // box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    box-shadow: none;
+}
+
+.HomePage{
+    width: 100%;
+    height: 100vh;
+    background-color: #ecf5f2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.HomeContainer{
+    margin: 1rem 0;
+    width: 80%;
+    // height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: linear-gradient(
+  to left,
+  #00000076 0%,
+  #32323262 50%,
+  #00000060 100%
+),#2A5846;
+    padding: 0;
+    border-radius: 2rem;
+   
+}
+.HomeNavContainer{
+    width: 100%;
+    // height: 10vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+    z-index: 999;
+    padding:  0;
+}
+.HomeNav{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-basis: auto;
+    width: 100%;
+    margin-top: -1rem;
+
+    // height: 100%;
+    overflow: hidden;
+    gap: 6rem;
+    padding: 1rem;
+    border-radius: 2rem 0 2rem 0;
+    background-color: #ecf5f2;
+    a{
+        color: #2A5846;
+        font-size: .9rem;
+        font-weight: 500;
+        cursor: pointer;
+        text-decoration: none;
+        font-family: "Inter", sans-serif;
+        transition: all .2s ease-in-out;
+        &:hover{
+            color: #F8A92E;
+            transform: scaleX(1.1);
+            transform: translateY(-.2rem);
+
+        }
+    }
+   
+}
+
+.LoginButtonContainer{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-basis: 15%;
+   width: 100%;
+   height: 100%;
+//    overflow: hidden;
+//    padding: 0 0 0 .98rem ;
+   border-radius: 0;
+   background-color: #ecf5f2;
+   .LoginButtonWrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height:4rem;
+    overflow: hidden;
+    overflow: hidden;
+    background: linear-gradient(
+  to left,
+  #00000076 0%,
+  #32323262 50%,
+  #00000060 100%
+),#2A5846;
+    padding: 0rem;
+    border-radius: 1.5rem 0 0 0;
+
+   }
+}
+.LoginButton{
+    background-color: #F8A92E;
+    color: #ecf5f2;
+    padding : 1rem 3rem;
+    margin-top: .5rem;
+    outline: none;
+    border: none;
+    border-radius: 2rem;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transform: background-color 1s ease-in-out, color 1s ease-in-out;
+    &:hover{
+        color: #F8A92E;
+        background-color: #ecf5f2 ;
+    }
+}
+
+.HomeBodyContainer{
+    position: relative;
+    display: flex;
+    margin: 0;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    // height: 100vh;
+    overflow: hidden;
+    z-index: 999;
+    // flex-wrap: wrap;
+    
+}
+
+.HomeBodyPart1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-basis: 30%;
+    width: 100%;
+    padding-left: 2rem;
+    z-index: 999;
+    
+    .HomeBodyTitle{
+        color: #ecf5f2;
+        font-size: 4rem;
+        font-weight: 200;
+        font-family: "Sedgwick Ave Display", sans-serif;
+        margin-bottom: 4rem;
+        text-align: right;
+        p{
+            text-align: right;
+            font-size: 1rem;
+            font-family: "Inter", sans-serif;
+            font-weight: 500;
+        }
+    }
+}
+.HomeBodyPart2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-basis: 40%;
+    width: 100%;
+}
+.HomeBodyPart3{ display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-basis: 30%;
+    padding-right: 1rem;
+    z-index: 999;
+    width: 100%;}
+
+.HomeSubtitleSection{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    // text-align: left;
+    // flex-basis: 30%;
+    gap: 1rem;
+    width: 100%;
+    h3{
+        color: #F8A92E;
+        font-size: 1.2rem;
+        font-weight: 400;
+        margin: 0;
+        font-family: "Inter", sans-serif;
+    }
+    .HomeSubtitleButtons{
+        color: #ecf5f2;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        // justify-content: center;
+        gap: 1rem;
+        // width: 100%;
+        button{
+            background-color: #F8A92E;
+            color: #ecf5f2;
+            padding : .8rem 3rem;
+            margin-top: .5rem;
+            outline: none;
+            border: none;
+            border-radius: 2rem;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transform: background-color 1s ease-in-out, color 1s ease-in-out;
+            margin: 0;
+            &:hover{
+                color: #F8A92E;
+                background-color: #ecf5f2 ;
+            }
+        }
+        span{
+            background-color: #F8A92E;
+            border-radius: 50%;
+            // width: 1.5rem;
+            // height: 1.5rem;
+            padding: .75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;            
+        }
+    }
+}
+
+.HomeBg{
+    position: absolute;
+    // top: 0;
+    // left: 0;
+    // width: 100%;
+    // height: 100%;
+    z-index: 0;
+}
+.HomeBgImage1{
+    right: 0;
+    height: fit-content;
+    width: fit-content;
+    filter: blur();
+
+}
+.HomeBgImage2{
+    left:-13rem;
+    filter: blur(2px);
+}
+.HomeBgImage3{
+    top: -2rem;
+    filter: blur(2px);
+    right: 0;
+}
+.HomeBgGradient{
+    position: absolute;
+    top: 8rem;
+    left: 34%;
+    width: 30rem;
+    height: 30rem;
+    border-radius: 50%;
+    z-index: 1;
+    background-color: #286B50;
+    filter: blur(200px);
+}
