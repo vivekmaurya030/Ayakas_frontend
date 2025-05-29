@@ -31,9 +31,9 @@ const Home = () => {
         <div className="HomeNavContainer">
           <nav className="HomeNav">
             <a href="#" className="HomeNavLink">Home</a>
-            <a href="#" className="HomeNavLink">Features</a>
-            <a href="#" className="HomeNavLink">About Us</a>
-            <a href="#" className="HomeNavLink">FAQs</a>
+            <a href="*" className="HomeNavLink">Features</a>
+            <a href="*" className="HomeNavLink">About Us</a>
+            <a href="*" className="HomeNavLink">FAQs</a>
           </nav>
           <div className="LoginButtonContainer">
             <div className="LoginButtonWrapper">
@@ -74,7 +74,7 @@ const Home = () => {
           <div className="HomeBodyPart3">
             <div className="HomeSubtitleSection">
               <h3>Craving for Creativity?🤔</h3>
-              <div className="HomeSubtitleButtons">
+              <div className="HomeSubtitleButtons" onClick={()=>navigate('/cook_with_ai')}>
                 <button>Cook With AI</button>
                 <span className="Checkmark">✔️</span>
               </div>

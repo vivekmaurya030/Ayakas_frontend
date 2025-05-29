@@ -137,8 +137,8 @@ const data = {
         <div className="QuickIngredContent">
           {/* Navbar */}
           <div className="QuickIngredNav">
-            <span className="AyakaLogo">
-              <img src={AyakaLogo} alt="logo" />
+            <span className="AyakaLogo" >
+              <img src={AyakaLogo} alt="logo" onClick={()=> navigate('/')}/>
             </span>
             <form onSubmit={handleSearchSubmit}>
               <TextField

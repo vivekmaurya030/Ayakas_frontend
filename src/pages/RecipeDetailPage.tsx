@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Loader from "../components/Loader";
 import "../styles/RecipeDetailPage.scss";
@@ -18,6 +19,7 @@ type Recipe = {
 };
 
 const RecipeDetailPage = () => {
+  const navigate = useNavigate();
   const { id } = useParams();
   const [recipe, setRecipe] = useState<Recipe | null>(null);
   const [loading, setLoading] = useState(true); // New loading state
@@ -51,6 +53,9 @@ const RecipeDetailPage = () => {
     .map((item) => item.trim())
     .filter(Boolean);
 
+  const imageFileName = recipe?.image.split("/").pop();
+
+
   const steps = recipe?.instructions
     .split(".")
     .map((step) => step.trim())
@@ -62,7 +67,14 @@ const RecipeDetailPage = () => {
         <Loader /> // Show Loader while fetching data
       ) : (
         recipe && (
-          <div className="RecipesPage">
+          <div className="RecipesPage" style={{
+            backgroundImage: `url(${
+              new URL(
+                `../assets/recipe_images/${imageFileName}.jpg`,
+                import.meta.url
+              ).href
+            })`
+          }}>
             <div className="RecipesDetailPageContainer">
               <div className="RecipesPageHeader">
                 <div className="RecipesBgVectorLeft">
@@ -72,12 +84,16 @@ const RecipeDetailPage = () => {
                   <img src={Vectors} alt="" />
                 </div>
                 <div className="HeaderLogo">
-                  <img src={AyakaLogo} alt="Ayaka Logo" />
+                  <img
+                    src={AyakaLogo}
+                    alt="Ayaka Logo"
+                    onClick={() => navigate("/")}
+                  />
                 </div>
-                <div className="HeaderAvatar">
+                <div className="HeaderAvatar" onClick = {()=> window.history.back()}>
                   <Avatar
                     alt="Ayaka Logo"
-                    src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90"
+                    src="https://tse2.mm.bing.net/th?id=OIP.dm78aO65OxcIymi5LwzWKwHaEK&pid=Api&P=0&h=2200"
                   />
                 </div>
               </div>
@@ -87,7 +103,12 @@ const RecipeDetailPage = () => {
                   <div
                     className="RecipesDetailBodyHeader"
                     style={{
-                      backgroundImage: `url("https://images.unsplash.com/photo-1496412705862-e0088f16f791?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070")`,
+                      backgroundImage: `url(${
+                        new URL(
+                          `../assets/recipe_images/${imageFileName}.jpg`,
+                          import.meta.url
+                        ).href
+                      })`,
                     }}
                   >
                     <h1>{recipe.name}</h1>
@@ -160,10 +181,7 @@ const RecipeDetailPage = () => {
                           <h1>Steps</h1>
                           <ul>
                             {steps.map((step, index) => (
-                              <div
-                                key={index}
-                                className="step-item"
-                              >
+                              <div key={index} className="step-item">
                                 <span className="step-number">
                                   Step {index + 1}:
                                 </span>

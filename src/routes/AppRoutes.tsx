@@ -9,6 +9,7 @@ import IngredientSelectPage from "../pages/IngredientsSelectPage";
 import RecipesPage from "../pages/Recipes";
 import RecipeDetailPage from "../pages/RecipeDetailPage";
 import CookWithAiPage from "../pages/CookWithAiPage";
+import AiGeneratedRecipe from "../pages/AiGeneratedRecipe";
 
 const AppRoutes = () => {
     return (
@@ -20,7 +21,9 @@ const AppRoutes = () => {
                 <Route path="/ingredients" element= {<IngredientSelectPage /> } />
                 <Route path="/cook_with_ai" element= {<CookWithAiPage /> } />
                 <Route path="/recipes" element= {<RecipesPage />} />
-                <Route path="/recipe/:name/:id" element={<RecipeDetailPage />} />
+                <Route path="/recipe/:name/:id" element={<RecipeDetailPage />} />\
+                <Route path="/ai_generated_recipe" element={<AiGeneratedRecipe />} />\
+                
                 <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
                 <Route path="*" element={<NotFound />} />
                

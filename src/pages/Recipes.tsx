@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useLocation,Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import AyakaLogo from "../assets/AyakaLogo.svg";
 import "../styles/RecipesPage.scss";
 import { Avatar } from "@mui/material";
@@ -8,7 +9,7 @@ import Vectors from "../assets/vector2.svg";
 import Loader from "../components/Loader";
 import Tooltip, { TooltipProps, tooltipClasses } from "@mui/material/Tooltip";
 import { styled } from "@mui/material/styles";
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
 
 type Recipe = {
   id: string;
@@ -34,7 +35,8 @@ const CustomTooltip = styled(({ className, ...props }: TooltipProps) => (
 
 const RecipesPage = () => {
   const { state } = useLocation();
-    const [loading, setLoading] = useState(true); // New loading state
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(true); // New loading state
   const [recipes, setRecipes] = useState<Recipe[]>([]);
   const [searchMode, setSearchMode] = useState<"fuzzy" | "strict">(
     state.searchMode || "fuzzy"
@@ -58,9 +60,11 @@ const RecipesPage = () => {
         );
         setRecipes(response.data.recipes || []);
         setLoading(false); // Set loading to false after data is fetched
-        console.log("Fetched recipes:", response.data.recipes[0].image+".jpg");
+        console.log(
+          "Fetched recipes:",
+          response.data.recipes[0].image + ".jpg"
+        );
         console.log("Fetched recipes:", response.data.recipes);
-        
       } catch (error) {
         console.error("Error fetching recipes:", error);
         setLoading(false);
@@ -88,7 +92,9 @@ const RecipesPage = () => {
 
   return (
     <>
-      {loading ? <Loader /> :(
+      {loading ? (
+        <Loader />
+      ) : (
         <div className="RecipesPage">
           <div className="RecipesPageContainer">
             <div className="RecipesPageHeader">
@@ -99,13 +105,17 @@ const RecipesPage = () => {
                 <img src={Vectors} alt="" />
               </div>
               <div className="HeaderLogo">
-                <img src={AyakaLogo} alt="Ayaka Logo" />
+                <img
+                  src={AyakaLogo}
+                  alt="Ayaka Logo"
+                  onClick={() => navigate("/")}
+                />
               </div>
               <div className="HeaderAvatar">
                 <Avatar
                   alt="Ayaka Logo"
                   src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=556,505"
-                />
+                 onClick={()=> window.history.back()}/>
               </div>
             </div>
 
@@ -208,40 +218,68 @@ const RecipesPage = () => {
 
                 <div className="RecipesCards">
                   {filteredRecipes.map((recipe) => (
-                     <Link to={`/recipe/${recipe.name}/${recipe.id}`} key={recipe.id} style={{ textDecoration: 'none', color: 'inherit' }}>
-                    <div className="RecipeCard" key={recipe.id}>
-                      <div className="RecipeCardImage">
-                      {/* {`../assets${recipe.image}.jpg`} */}
-                      <img key={recipe.id} src={new URL(`../assets/recipe_images/Spicy_Soya_Bhurji_Recipe_-_North_Indian_Soya_Matar_Bhurji.jpg`, import.meta.url).href} alt={`${recipe.name}-${recipe.id}`} />
-
-                      </div>
-                      <div className="RecipeCardDetails">
-                        <CustomTooltip title={recipe.name} key={recipe.id}>
-                          <h2>{recipe.name.trim().slice(0, 30) + "..."}</h2>
-                        </CustomTooltip>
-                        <p>{recipe.description.slice(0, 100)}...</p>
-                        <span
-                          className="diet"
-                          style={{
-                            borderColor:
-                              recipe.diet_type === "Vegetarian"
-                                ? "green"
-                                : "red",
-                          }}
-                        >
+                    <Link
+                      to={`/recipe/${recipe.name}/${recipe.id}`}
+                      key={recipe.id}
+                      style={{ textDecoration: "none", color: "inherit" }}
+                    >
+                      <div className="RecipeCard" key={recipe.id}>
+                        <div className="RecipeCardImage">
+                          {/* {`../assets${recipe.image}.jpg`} */}
+                          {/* <img key={recipe.id} src={new URL(`../assets/recipe_images/Spicy_Soya_Bhurji_Recipe_-_North_Indian_Soya_Matar_Bhurji.jpg`, import.meta.url).href} alt={`${recipe.name}-${recipe.id}`} /> */}
+                          {(() => {
+                            const imageFileName = recipe.image.split("/").pop(); // Get the last part
+                            return (
+                              <img
+                                key={recipe.id}
+                                src={
+                                  new URL(
+                                    `../assets/recipe_images/${imageFileName}.jpg`,
+                                    import.meta.url
+                                  ).href
+                                }
+                                alt={`${recipe.name}-${recipe.id}`}
+                              />
+                            );
+                          })()}
+                        </div>
+                        <div className="RecipeCardDetails">
+                          <CustomTooltip title={recipe.name} key={recipe.id}>
+                            <h2>{recipe.name.trim().slice(0, 30) + "..."}</h2>
+                          </CustomTooltip>
+                          <p>{recipe.description.slice(0, 100)}...</p>
                           <span
-                            className="diet-icon"
+                            className="diet"
                             style={{
-                              backgroundColor:
+                              borderColor:
                                 recipe.diet_type === "Vegetarian"
                                   ? "green"
                                   : "red",
                             }}
-                          ></span>
-                        </span>
-                        <p style={{ display: "flex", alignItems: "center", gap: ".5rem", color : "rgb(10, 129, 73)" }}><AccessTimeIcon />{parseInt(recipe.prep_time)}&nbsp;minutes</p>
+                          >
+                            <span
+                              className="diet-icon"
+                              style={{
+                                backgroundColor:
+                                  recipe.diet_type === "Vegetarian"
+                                    ? "green"
+                                    : "red",
+                              }}
+                            ></span>
+                          </span>
+                          <p
+                            style={{
+                              display: "flex",
+                              alignItems: "center",
+                              gap: ".5rem",
+                              color: "rgb(10, 129, 73)",
+                            }}
+                          >
+                            <AccessTimeIcon />
+                            {parseInt(recipe.prep_time)}&nbsp;minutes
+                          </p>
+                        </div>
                       </div>
-                    </div>
                     </Link>
                   ))}
                   {filteredRecipes.length === 0 && (
