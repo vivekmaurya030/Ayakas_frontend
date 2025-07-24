@@ -14,15 +14,7 @@ import FuzzyIcon from "../assets/FuzzyIcon.svg";
 import StrictIcon from "../assets/StrictIcon.svg";
 import Vector2 from "../assets/vector2.svg";
 
-const CustomTooltip = styled(({ className, ...props }: TooltipProps) => (
-  <Tooltip {...props} classes={{ popper: className }} />
-))({
-  [`& .${tooltipClasses.tooltip}`]: {
-    maxWidth: 500,
-    color: "#1F3F32",
-    backgroundColor: "rgba(242, 242, 242, 0.16)",
-  },
-});
+
 
 const supportingIngredientsList = ["Pepper", "Garlic", "Basil", "Rice", "Beef"];
 

@@ -1,0 +1,22 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.AiRecipesPage{
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    align-items: center;
+    // height: 100vh;
+
+}
+.AiGeneratedRecipe{
+    color: aliceblue;
+    padding: 1rem 3rem;
+    gap: 1rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: .8rem;
+    align-items: flex-start;
+    
+}
