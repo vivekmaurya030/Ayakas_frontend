@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
 import Loader from "../components/Loader";
@@ -6,11 +6,22 @@ import "../styles/AiGeneratedRecipe.scss";
 import AyakaLogo from "../assets/AyakaLogo.svg";
 import Vector2 from "../assets/vector2.svg";
 
+interface RecipeType {
+  title?: string;
+  author?: string;
+  ingredients?: string[];
+  directions?: string[];
+  instructions?: string[];
+  methods?: string[];
+  preparations?: string[];
+  source?: string;
+}
+
 const AiGeneratedRecipe = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
-  const [recipe, setRecipe] = useState(null);
+  const [recipe, setRecipe] = useState<RecipeType | null>(null);
   const hasFetched = useRef(false);
 
   useEffect(() => {
@@ -26,14 +37,8 @@ const AiGeneratedRecipe = () => {
       try {
         const response = await axios.post(
           "http://127.0.0.1:8000/cook_with_ai",
-          {
-            ingredients: state.ingredients,
-          },
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
+          { ingredients: state.ingredients },
+          { headers: { "Content-Type": "application/json" } }
         );
         setRecipe(response.data.recipe);
       } catch (error) {
@@ -57,19 +62,23 @@ const AiGeneratedRecipe = () => {
             <div className="QuickIngredPage">
               <div className="QuickIngredContainer">
                 <div className="BgVector1">
-                  <img src={Vector2} alt="" />
+                  <img src={Vector2} alt="Background vector" />
                 </div>
                 <div className="BgVector2">
-                  <img src={Vector2} alt="" />
+                  <img src={Vector2} alt="Background vector" />
                 </div>
                 <div className="BgVector3">
-                  <img src={Vector2} alt="" />
+                  <img src={Vector2} alt="Background vector" />
                 </div>
 
                 <div className="QuickIngredContent">
                   <div className="QuickIngredNav">
                     <span className="AyakaLogo">
-                      <img src={AyakaLogo} alt="logo" onClick={() => navigate("/")} />
+                      <img
+                        src={AyakaLogo}
+                        alt="Ayaka Logo"
+                        onClick={() => navigate("/")}
+                      />
                     </span>
                   </div>
 
@@ -151,13 +160,23 @@ const AiGeneratedRecipe = () => {
                     )}
                   </div>
                 </div>
-              <div className="CookButton" onClick={()=> navigate(0)}>Regenerate</div>
+
+                <div
+                  className="CookButton"
+                  onClick={() => {
+                    // Resetting loading and recipe for smooth regeneration
+                    setLoading(true);
+                    setRecipe(null);
+                    hasFetched.current = false;
+                  }}
+                >
+                  Regenerate
+                </div>
               </div>
             </div>
           ) : (
             <p>No recipe found. Try different ingredients.</p>
           )}
-
         </div>
       )}
     </>

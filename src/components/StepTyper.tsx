@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const steps = [
   "1. Wash and cut the bitter gourd into 2-inch cylinders.",

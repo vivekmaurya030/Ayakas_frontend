@@ -1,8 +1,9 @@
 import { Navigate } from "react-router";
  import { useAuthContext } from "../hooks/useAuthContext";
+import React from "react";
 
  interface ProtectedRouteProps {
-    children: JSX.Element
+    children: React.ReactNode
  }
 
 export const ProtectedRoute = ({children}: ProtectedRouteProps) => {

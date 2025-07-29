@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import ChefSvg from "../assets/ChefSvg.svg";
 import "../styles/Home.scss";

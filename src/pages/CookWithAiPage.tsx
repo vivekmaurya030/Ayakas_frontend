@@ -1,17 +1,12 @@
 import { useEffect, useState } from "react";
 import {
   Chip,
-  Button,
   TextField,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import Tooltip, { TooltipProps, tooltipClasses } from "@mui/material/Tooltip";
-import { styled } from "@mui/material/styles";
 import "../styles/IngredSelectPage.scss";
 import { fetchAllIngredients } from "../services/aiEngine";
 import AyakaLogo from "../assets/AyakaLogo.svg";
-import FuzzyIcon from "../assets/FuzzyIcon.svg";
-import StrictIcon from "../assets/StrictIcon.svg";
 import Vector2 from "../assets/vector2.svg";
 
 
